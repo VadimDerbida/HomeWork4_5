@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework4_5.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,5 +38,43 @@ class FragmentFeed : Fragment() {
         setupUi()
     }
 
+    private fun setupUi() {
+        _adapter = FeedAdapter(
+            likeOnClickListener = {
+                viewModel.updateLike(it)
+            }
+        )
+        binding.postRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.postRecyclerView.adapter = adapter
+
+        val divider = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
+        binding.postRecyclerView.addItemDecoration(divider)
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.feedUiState.collectLatest {
+                when (it.loading) {
+                    true -> binding.progressCircular.visibility = View.VISIBLE
+                    false -> binding.progressCircular.visibility = View.GONE
+                }
+
+
+                when (it.data.isNotEmpty()) {
+                    true -> {
+                        adapter.setPosts(it.data)
+                    }
+                    false -> {
+
+                    }
+                }
+            }
+        }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _adapter = null
+        _binding = null
+    }
 
 }

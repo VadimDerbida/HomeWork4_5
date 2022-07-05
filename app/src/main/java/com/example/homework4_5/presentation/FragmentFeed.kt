@@ -41,7 +41,7 @@ class FragmentFeed : Fragment() {
     private fun setupUi() {
         _adapter = FeedAdapter(
             likeOnClickListener = {
-                viewModel.updateLike(it)
+                ViewModel.updateLike(it)
             }
         )
         binding.postRecyclerView.layoutManager = LinearLayoutManager(requireContext())

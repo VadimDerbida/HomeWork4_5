@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.homework4_5.Comment
 import com.example.homework4_5.R
 import com.example.homework4_5.domain.model.FeedPost
-import com.olegsaievich.lesson4_5.domain.state.FeedUiState
+import com.example.homework4_5.domain.state.FeedUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -28,7 +28,7 @@ class FeedViewModel @Inject constructor(): ViewModel() {
                     authorName = "Vadim Derbida",
                     authorImage = R.drawable.vadim,
                     postImage = R.drawable.landscape,
-                    likeCounter = 1000,
+                    likeCounter = 5000,
                     comments = listOf(
                         Comment(
                             authorName = "Daniil Hozhenko",
@@ -73,7 +73,7 @@ class FeedViewModel @Inject constructor(): ViewModel() {
                     authorName = "Daniil Hozhenko",
                     authorImage = R.drawable.daniil,
                     postImage = R.drawable.landscape_2,
-                    likeCounter = 300,
+                    likeCounter = 3000,
                     comments = listOf(
                         Comment(
                             authorName = "Vadim Derbida",
@@ -88,7 +88,7 @@ class FeedViewModel @Inject constructor(): ViewModel() {
                     authorName = "Oleg Saievich",
                     authorImage = R.drawable.oleh,
                     postImage = R.drawable.landscape_3,
-                    likeCounter = 0,
+                    likeCounter =-1000,
                     comments = listOf(
                         Comment(
                             authorName = "Vadim Derbida",
@@ -118,7 +118,7 @@ class FeedViewModel @Inject constructor(): ViewModel() {
                     authorName = "Sasha Prokipchuk",
                     authorImage = R.drawable.sanya,
                     postImage = R.drawable.landscape_4,
-                    likeCounter = 242,
+                    likeCounter = 2420,
                     comments = listOf(
                         Comment(
                             authorName = "Vadim Derbida",
@@ -148,7 +148,7 @@ class FeedViewModel @Inject constructor(): ViewModel() {
                     authorName = "Ilya Nosulich",
                     authorImage = R.drawable.ilya,
                     postImage = R.drawable.landscape_5,
-                    likeCounter = 94,
+                    likeCounter = 94000,
                     comments = listOf(
                         Comment(
                             authorName = "Vadim Derbida",

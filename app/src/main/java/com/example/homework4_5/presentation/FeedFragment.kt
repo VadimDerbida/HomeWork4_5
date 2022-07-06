@@ -8,26 +8,31 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework4_5.databinding.FragmentFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class FragmentFeed : Fragment() {
+
+class FeedFragment : Fragment() {
+
     private var _binding: FragmentFeedBinding? = null
     private val binding get() = _binding!!
 
     private var _adapter: FeedAdapter? = null
     private val adapter get() = _adapter!!
 
-    private val viewModel: ViewModel by viewModels()
+    private val viewModel: FeedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFeedBinding.inflate(inflater)
         return binding.root
     }
@@ -35,14 +40,21 @@ class FragmentFeed : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.loadData()
+
         setupUi()
     }
 
     private fun setupUi() {
         _adapter = FeedAdapter(
+            commentOnClickListener = {
+                findNavController().navigate(FeedFragmentDirections.actionFragmentFeedToCommentFragment())
+
+
+            },
             likeOnClickListener = {
-                ViewModel.updateLike(it)
+                viewModel.updateLike(it)
             }
+
         )
         binding.postRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.postRecyclerView.adapter = adapter
@@ -57,7 +69,6 @@ class FragmentFeed : Fragment() {
                     false -> binding.progressCircular.visibility = View.GONE
                 }
 
-
                 when (it.data.isNotEmpty()) {
                     true -> {
                         adapter.setPosts(it.data)
@@ -69,7 +80,6 @@ class FragmentFeed : Fragment() {
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

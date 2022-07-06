@@ -7,7 +7,15 @@
 
     <fragment
         android:id="@+id/fragmentFeed"
-        android:name="com.example.homework4_5.presentation.FragmentFeed"
+        android:name="com.example.homework4_5.presentation.FeedFragment"
         android:label="FragmentFeed"
-        tools:layout="@layout/fragment_feed"/>
+        tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/action_fragmentFeed_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.homework4_5.presentation.CommentFragment"
+        android:label="CommentFragment" />
 </navigation>

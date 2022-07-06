@@ -1,7 +1,9 @@
-package com.example.homework4_5.Core
+package com.example.homework4_5.core
+
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class HomeWork4_5app : Application() {
+class HomeWork4App : Application() {
+
 }

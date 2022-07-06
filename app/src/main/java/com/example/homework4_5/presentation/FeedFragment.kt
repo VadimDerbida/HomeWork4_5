@@ -48,8 +48,6 @@ class FeedFragment : Fragment() {
         _adapter = FeedAdapter(
             commentOnClickListener = {
                 findNavController().navigate(FeedFragmentDirections.actionFragmentFeedToCommentFragment())
-
-
             },
             likeOnClickListener = {
                 viewModel.updateLike(it)

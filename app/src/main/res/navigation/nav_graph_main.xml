@@ -17,5 +17,11 @@
     <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.homework4_5.presentation.CommentFragment"
-        android:label="CommentFragment" />
+        android:label="CommentFragment">
+        <argument
+            android:name="post"
+            app:argType="com.example.homework4_5.domain.model.FeedPost">
+        </argument>
+
+    </fragment>
 </navigation>

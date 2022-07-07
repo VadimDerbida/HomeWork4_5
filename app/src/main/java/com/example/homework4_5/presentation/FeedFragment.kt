@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework4_5.databinding.FragmentFeedBinding
+import com.example.homework4_5.domain.model.FeedPost
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -40,14 +41,15 @@ class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.loadData()
-
         setupUi()
     }
+
 
     private fun setupUi() {
         _adapter = FeedAdapter(
             commentOnClickListener = {
-                findNavController().navigate(FeedFragmentDirections.actionFragmentFeedToCommentFragment())
+                findNavController().navigate(FeedFragmentDirections.actionFragmentFeedToCommentFragment(post = it))
+
             },
             likeOnClickListener = {
                 viewModel.updateLike(it)

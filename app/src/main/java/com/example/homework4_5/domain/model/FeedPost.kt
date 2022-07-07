@@ -1,11 +1,13 @@
 package com.example.homework4_5.domain.model
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
-import com.example.homework4_5.Comment
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
 
 
 @Serializable
+@Parcelize
 data class FeedPost(
     val id: Int,
     val authorName: String,
@@ -14,4 +16,4 @@ data class FeedPost(
     val likeCounter: Int,
     val comments: List <Comment>,
     val isLiked: Boolean
-)
+): Parcelable

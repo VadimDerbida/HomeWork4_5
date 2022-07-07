@@ -48,7 +48,11 @@ class FeedFragment : Fragment() {
     private fun setupUi() {
         _adapter = FeedAdapter(
             commentOnClickListener = {
-                findNavController().navigate(FeedFragmentDirections.actionFragmentFeedToCommentFragment(post = it))
+                findNavController().navigate(
+                    FeedFragmentDirections.actionFragmentFeedToCommentFragment(
+                        post = it
+                    )
+                )
 
             },
             likeOnClickListener = {

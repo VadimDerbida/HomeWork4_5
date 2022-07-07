@@ -19,7 +19,10 @@ import com.example.homework4_5.domain.model.FeedPost
 import com.google.android.material.textview.MaterialTextView
 import de.hdodenhof.circleimageview.CircleImageView
 
-class FeedAdapter(private val likeOnClickListener: (post: FeedPost) -> Unit, private val commentOnClickListener: (post: FeedPost)-> Unit) :
+class FeedAdapter(
+    private val likeOnClickListener: (post: FeedPost) -> Unit,
+    private val commentOnClickListener: (post: FeedPost) -> Unit
+) :
     RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<FeedPost>() {
@@ -62,6 +65,7 @@ class FeedAdapter(private val likeOnClickListener: (post: FeedPost) -> Unit, pri
         likeText.text = post.likeCounter.toString()
         commentCount.text = post.comments.size.toString()
 
+
         likeIcon.imageTintList = if (post.isLiked) ColorStateList.valueOf(
             ContextCompat.getColor(
                 holder.itemView.context,
@@ -75,7 +79,7 @@ class FeedAdapter(private val likeOnClickListener: (post: FeedPost) -> Unit, pri
         likeIcon.setOnClickListener {
             likeOnClickListener(post)
         }
-        commentIcon.setOnClickListener{
+        commentIcon.setOnClickListener {
             commentOnClickListener(post)
         }
 
@@ -87,5 +91,5 @@ class FeedAdapter(private val likeOnClickListener: (post: FeedPost) -> Unit, pri
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    }
+}
 

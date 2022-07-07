@@ -9,25 +9,7 @@
         android:id="@+id/commentRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/commentLayout" />
-
-    <LinearLayout
-        android:padding="6dp"
-        android:id="@+id/commentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/content_text"
-            android:padding="8.dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-    </LinearLayout>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

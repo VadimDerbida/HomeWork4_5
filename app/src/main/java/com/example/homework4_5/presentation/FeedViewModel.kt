@@ -2,7 +2,7 @@ package com.example.homework4_5.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.homework4_5.Comment
+import com.example.homework4_5.domain.model.Comment
 import com.example.homework4_5.R
 import com.example.homework4_5.domain.model.FeedPost
 import com.example.homework4_5.domain.state.FeedUiState

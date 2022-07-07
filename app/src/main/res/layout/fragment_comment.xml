@@ -21,22 +21,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/content_text"
+            android:padding="8.dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/commentET"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="12dp"
-            android:hint="Enter your comment here" />
-
-        <ImageButton
-            android:id="@+id/sendBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:elevation="1dp"
-            android:src="@drawable/ic_send" />
 
     </LinearLayout>
 
